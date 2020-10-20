@@ -1,13 +1,16 @@
+import java.lang.invoke.LambdaConversionException;
+
 public class Rational
 {
-    // instance variables: every Rational object will have its own copy
-    // of these variables
+
+    // instance variables: every Rational object will have its own copy of these variables
     public int numerator;
     public int denominator;
     
-    /**
+    /*
      * Constructor: the special method that will actually create a new Rational
      * object
+     * no static
      * Constructors are always public
      * Constructors have the same name as the class
      * Constructors have no return type
@@ -26,6 +29,7 @@ public class Rational
         int newDenominator = r.denominator*s.denominator; 
         
         Rational x = new Rational(newNumerator, newDenominator);
+        x = simplify(x);
         return x;
     }
 
@@ -50,28 +54,44 @@ public class Rational
     //      simplify(1/2) => 1/2
     public static Rational simplify(Rational r)
     {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int gcf = greatestCommonFactor(r.numerator, r.denominator);
+        int newNumerator = r.numerator/gcf;
+        int newDenominator = r.denominator/gcf; 
+        
+        Rational x = new Rational(newNumerator, newDenominator);
+        return x;
     }
 
     // This method takes two Rationals, subtracts thems up, 
     // and returns a Rational equal to the difference
     public static Rational subtract(Rational r, Rational s)
     {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int newNumerator = r.numerator*s.denominator - s.numerator*r.denominator;
+        int newDenominator = r.denominator*s.denominator; 
+        
+        Rational x = new Rational(newNumerator, newDenominator);
+        x = simplify(x);
+        return x;
     }
     
     public static Rational multiply(Rational r, Rational s)
     {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int newNumerator = r.numerator*s.numerator;
+        int newDenominator = r.denominator*s.denominator; 
+        
+        Rational x = new Rational(newNumerator, newDenominator);
+        x = simplify(x);
+        return x;
     }
     
     public static Rational divide(Rational r, Rational s)
     {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int newNumerator = r.numerator*s.denominator;
+        int newDenominator = r.denominator*s.numerator; 
+        
+        Rational x = new Rational(newNumerator, newDenominator);
+        x = simplify(x);
+        return x;
     }
 
 
